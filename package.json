@@ -1,7 +1,7 @@
 {
   "name": "perfuapp",
   "version": "1.0.0",
-  "description": "Aplicación profesional para cálculos de perfusión, CEC y ECMO",
+  "description": "Aplicacion profesional para calculos de perfusion, CEC y ECMO",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
