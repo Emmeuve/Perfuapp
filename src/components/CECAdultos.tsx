@@ -78,29 +78,29 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
   };
 
   const renderCalculos = () => (
-    <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6 flex items-center">
           <Calculator className="w-5 h-5 mr-2 text-blue-600" />
           Datos del Paciente (Opcionales)
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <input
             type="text"
             placeholder="Nombre"
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             value={patientData.nombre || ''}
             onChange={(e) => setPatientData({...patientData, nombre: e.target.value})}
           />
           <input
             type="text"
             placeholder="Apellido"
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             value={patientData.apellido || ''}
             onChange={(e) => setPatientData({...patientData, apellido: e.target.value})}
           />
           <select
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             value={patientData.sexo || ''}
             onChange={(e) => setPatientData({...patientData, sexo: e.target.value as 'M' | 'F' | ''})}
           >
@@ -111,69 +111,69 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
           <input
             type="number"
             placeholder="Edad"
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             value={patientData.edad || ''}
             onChange={(e) => setPatientData({...patientData, edad: parseInt(e.target.value)})}
           />
           <input
             type="text"
             placeholder="Diagnóstico"
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 md:col-span-2"
+            className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all sm:col-span-2"
             value={patientData.diagnostico || ''}
             onChange={(e) => setPatientData({...patientData, diagnostico: e.target.value})}
           />
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+      <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6 flex items-center">
           <Calculator className="w-5 h-5 mr-2 text-blue-600" />
           Cálculos CEC (Obligatorios)
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Peso (kg) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Peso (kg) *</label>
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.peso || ''}
               onChange={(e) => setCecData({...cecData, peso: parseFloat(e.target.value) || 0})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Talla (cm) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Talla (cm) *</label>
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.talla || ''}
               onChange={(e) => setCecData({...cecData, talla: parseFloat(e.target.value) || 0})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Hematocrito deseado (%) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Hematocrito deseado (%) *</label>
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.hematocritoDeseado}
               onChange={(e) => setCecData({...cecData, hematocritoDeseado: parseFloat(e.target.value) || 25})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Priming utilizado (ml) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Priming utilizado (ml) *</label>
             <input
               type="number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.primingUtilizado}
               onChange={(e) => setCecData({...cecData, primingUtilizado: parseInt(e.target.value) || 1500})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Volemia (ml/kg) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Volemia (ml/kg) *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.volemia}
               onChange={(e) => setCecData({...cecData, volemia: parseFloat(e.target.value)})}
             >
@@ -184,9 +184,9 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Índice cardíaco (L/min/m²) *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Índice cardíaco (L/min/m²) *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               value={cecData.indiceCardiaco}
               onChange={(e) => setCecData({...cecData, indiceCardiaco: parseFloat(e.target.value)})}
             >
@@ -198,10 +198,10 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
           </div>
         </div>
         
-        <div className="mt-6">
+        <div className="mt-8">
           <button
             onClick={calculateCEC}
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Calcular
           </button>
@@ -209,35 +209,35 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
       </div>
 
       {results && (
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6 flex items-center">
             <FileText className="w-5 h-5 mr-2 text-green-600" />
             Resultados
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-blue-50 p-4 rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
               <p className="text-sm text-gray-600">Superficie Corporal</p>
-              <p className="text-2xl font-bold text-blue-600">{results.sc} m²</p>
+              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{results.sc} m²</p>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
               <p className="text-sm text-gray-600">Volemia Total</p>
-              <p className="text-2xl font-bold text-green-600">{results.volemiaTotal} ml</p>
+              <p className="text-2xl sm:text-3xl font-bold text-green-600">{results.volemiaTotal} ml</p>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
               <p className="text-sm text-gray-600">Flujo</p>
-              <p className="text-2xl font-bold text-purple-600">{results.flujo} L/min</p>
+              <p className="text-2xl sm:text-3xl font-bold text-purple-600">{results.flujo} L/min</p>
             </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl border border-orange-200">
               <p className="text-sm text-gray-600">Hcto S/S</p>
-              <p className="text-2xl font-bold text-orange-600">{results.hctoSS}%</p>
+              <p className="text-2xl sm:text-3xl font-bold text-orange-600">{results.hctoSS}%</p>
             </div>
-            <div className="bg-red-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-200">
               <p className="text-sm text-gray-600">Flujo Cerebral</p>
-              <p className="text-2xl font-bold text-red-600">{results.flujoCerebral} L/min</p>
+              <p className="text-2xl sm:text-3xl font-bold text-red-600">{results.flujoCerebral} L/min</p>
             </div>
-            <div className="bg-indigo-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl border border-indigo-200">
               <p className="text-sm text-gray-600">Flujo Cardíaco</p>
-              <p className="text-2xl font-bold text-indigo-600">{results.flujoCardiaco} L/min</p>
+              <p className="text-2xl sm:text-3xl font-bold text-indigo-600">{results.flujoCardiaco} L/min</p>
             </div>
           </div>
         </div>
@@ -250,8 +250,8 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
     const canulasRecomendadas = flujo > 0 ? getCanulasForFlow(flujo) : [];
 
     return (
-      <div className="space-y-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="space-y-6 sm:space-y-8">
+        <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Recomendaciones de Cánulas
           </h3>
@@ -272,7 +272,7 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
                     </h4>
                     <div className="space-y-2">
                       {canulasDelTipo.map(canula => (
-                        <div key={canula.id} className="bg-gray-50 p-3 rounded-lg">
+                        <div key={canula.id} className="bg-gray-50 p-4 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">
                           <div className="flex justify-between items-start">
                             <div>
                               <p className="font-medium text-gray-900">{canula.descripcion}</p>
@@ -280,7 +280,7 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
                                 Flujo: {canula.flujoMinimo} - {canula.flujoMaximo} L/min
                               </p>
                             </div>
-                            <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
+                            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                               {canula.marca}
                             </span>
                           </div>
@@ -300,8 +300,8 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
   };
 
   const renderGDP = () => (
-    <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <Stethoscope className="w-5 h-5 mr-2 text-red-600" />
           Cálculos GDP
@@ -312,7 +312,7 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
               value={gdpData.hb}
               onChange={(e) => setGdpData({...gdpData, hb: parseFloat(e.target.value) || 10})}
             />
@@ -322,7 +322,7 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
               value={gdpData.gc}
               onChange={(e) => setGdpData({...gdpData, gc: parseFloat(e.target.value) || 5})}
             />
@@ -332,7 +332,7 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
             <input
               type="number"
               step="0.1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
               value={gdpData.satO2}
               onChange={(e) => setGdpData({...gdpData, satO2: parseFloat(e.target.value) || 98})}
             />
@@ -341,28 +341,28 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
         
         <button
           onClick={calculateGDP}
-          className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors mb-6"
+          className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 mb-6"
         >
           Calcular GDP
         </button>
 
         {gdpData.do2 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-red-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-200">
               <p className="text-sm text-gray-600">DO2</p>
-              <p className="text-2xl font-bold text-red-600">{gdpData.do2} ml/min</p>
+              <p className="text-2xl sm:text-3xl font-bold text-red-600">{gdpData.do2} ml/min</p>
             </div>
-            <div className="bg-blue-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
               <p className="text-sm text-gray-600">VO2</p>
-              <p className="text-2xl font-bold text-blue-600">{gdpData.vo2} ml/min</p>
+              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{gdpData.vo2} ml/min</p>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
               <p className="text-sm text-gray-600">CEO2</p>
-              <p className="text-2xl font-bold text-green-600">{gdpData.ceo2} ml/dL</p>
+              <p className="text-2xl sm:text-3xl font-bold text-green-600">{gdpData.ceo2} ml/dL</p>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg">
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
               <p className="text-sm text-gray-600">CvO2</p>
-              <p className="text-2xl font-bold text-purple-600">{gdpData.cvo2} ml/dL</p>
+              <p className="text-2xl sm:text-3xl font-bold text-purple-600">{gdpData.cvo2} ml/dL</p>
             </div>
           </div>
         )}
@@ -374,52 +374,52 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
     const oxigenadores = getOxigenadoresByType('adulto');
     
     return (
-      <div className="space-y-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="space-y-6 sm:space-y-8">
+        <div className="bg-white rounded-xl shadow-soft p-6 sm:p-8 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
             <Settings className="w-5 h-5 mr-2 text-blue-600" />
             Oxigenadores para CEC Adultos
           </h3>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Marca/Modelo
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Flujo Max (L/min)
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Flujo Min (L/min)
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Priming (ml)
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Superficie (m²)
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {oxigenadores.map((ox, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr key={index} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{ox.marca}</div>
+                        <div className="text-sm font-semibold text-gray-900">{ox.marca}</div>
                         <div className="text-sm text-gray-500">{ox.modelo}</div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {ox.maxFlowRate}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {ox.minFlowRate}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {ox.priming}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {ox.superficie}
                     </td>
                   </tr>
@@ -441,9 +441,9 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
 
   return (
     <Layout title="CEC Adultos" onBack={onBack}>
-      <div className="mb-6">
+      <div className="mb-8">
         <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8">
+          <nav className="-mb-px flex space-x-4 sm:space-x-8 overflow-x-auto">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -452,8 +452,8 @@ export const CECAdultos: React.FC<CECAdultosProps> = ({ onBack }) => {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm ${
                     activeTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-blue-500 text-blue-600 bg-blue-50 rounded-t-lg px-4'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 hover:bg-gray-50 rounded-t-lg px-4'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

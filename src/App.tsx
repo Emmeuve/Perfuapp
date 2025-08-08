@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Baby, Activity, Syringe, ClipboardList, Pill, ArrowRight, Calculator, Beaker, TrendingUp } from 'lucide-react';
+import { Heart, Baby, Activity, Syringe, ClipboardList, Pill, ArrowRight, Calculator, Beaker, TrendingUp, Menu, X } from 'lucide-react';
 import { CECAdultos } from './components/CECAdultos';
 import { CorreccionELP } from './components/CorreccionELP';
 import './App.css';
@@ -8,6 +8,7 @@ type Section = 'home' | 'cec-adultos' | 'cec-pediatrica' | 'ecmo' | 'correccion-
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState<Section>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const renderCurrentSection = () => {
     switch (currentSection) {
@@ -22,23 +23,29 @@ export default function App() {
   };
 
   const renderHome = () => (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {/* Header */}
-        <header className="text-center py-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Heart className="text-red-500 w-12 h-12" />
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 gradient-text">PerfuApp</h1>
-              <p className="text-lg text-gray-600 mt-2">
+        <header className="text-center py-8 sm:py-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <div className="relative">
+              <Heart className="text-red-500 w-16 h-16 sm:w-20 sm:h-20 animate-bounce-gentle" />
+              <div className="absolute inset-0 bg-red-500 w-16 h-16 sm:w-20 sm:h-20 rounded-full opacity-20 animate-ping"></div>
+            </div>
+            <div className="text-center sm:text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 gradient-text mb-2">
+                PerfuApp
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl">
                 Aplicación profesional para cálculos de perfusión, CEC y ECMO
               </p>
             </div>
           </div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full"></div>
         </header>
 
         {/* Sections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <SectionCard
             icon={<Activity className="w-8 h-8 text-blue-600" />}
             title="CEC Adultos"
@@ -120,7 +127,7 @@ export default function App() {
         </div>
 
         {/* Footer */}
-        <footer className="text-center py-8 text-gray-500">
+        <footer className="text-center py-8 sm:py-12 text-gray-500 border-t border-gray-200 mt-16">
           <p>© 2025 PerfuApp - Herramienta profesional para perfusionistas</p>
         </footer>
       </div>
@@ -145,45 +152,52 @@ interface SectionCardProps {
 
 function SectionCard({ icon, title, description, color, onClick, disabled = false }: SectionCardProps) {
   const colorClasses = {
-    blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
-    pink: 'from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700',
-    green: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
-    purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
-    orange: 'from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700',
-    red: 'from-red-500 to-red-600 hover:from-red-600 hover:to-red-700',
-    indigo: 'from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700',
-    cyan: 'from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700',
-    teal: 'from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700'
+    blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-blue-200',
+    pink: 'from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 shadow-pink-200',
+    green: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-green-200',
+    purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 shadow-purple-200',
+    orange: 'from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-orange-200',
+    red: 'from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 shadow-red-200',
+    indigo: 'from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 shadow-indigo-200',
+    cyan: 'from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 shadow-cyan-200',
+    teal: 'from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 shadow-teal-200'
   };
 
   return (
     <div 
       className={`
-        bg-white rounded-xl shadow-soft p-6 cursor-pointer transition-all duration-300 
-        card-hover border border-gray-100
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-medium'}
+        bg-white rounded-2xl shadow-soft p-6 sm:p-8 cursor-pointer transition-all duration-500 
+        card-hover border border-gray-100 group relative overflow-hidden
+        ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-strong hover:-translate-y-2'}
       `}
       onClick={disabled ? undefined : onClick}
     >
-      <div className="flex items-start space-x-4">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-50 to-transparent rounded-full transform translate-x-16 -translate-y-16 opacity-50"></div>
+      
+      <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 relative z-10">
         <div className={`
-          p-3 rounded-lg bg-gradient-to-r ${colorClasses[color as keyof typeof colorClasses]} 
-          text-white shadow-sm
+          p-4 rounded-xl bg-gradient-to-r ${colorClasses[color as keyof typeof colorClasses]} 
+          text-white shadow-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3
         `}>
           {icon}
         </div>
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        <div className="flex-1 text-center sm:text-left">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
             {title}
-            {disabled && <span className="text-sm text-gray-400 ml-2">(Próximamente)</span>}
+            {disabled && (
+              <span className="block sm:inline text-sm text-gray-400 sm:ml-2 mt-1 sm:mt-0">
+                (Próximamente)
+              </span>
+            )}
           </h3>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
             {description}
           </p>
           {!disabled && (
-            <div className="flex items-center text-blue-600 font-medium text-sm">
+            <div className="flex items-center justify-center sm:justify-start text-blue-600 font-semibold text-sm group-hover:text-blue-700 transition-colors">
               <span>Acceder</span>
-              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-2" />
             </div>
           )}
         </div>
