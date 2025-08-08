@@ -5,5 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/Perfuapp/', // 👈 nombre exacto del repo en GitHub
 })
-
-// Este archivo configura Vite para un proyecto React, especificando el uso del plugin de React y estableciendo la base para el despliegue en GitHub Pages.
+// vite.config.ts
+// Configuración de Vite para el proyecto Perfuapp
+// Importa defineConfig de Vite y el plugin de React
